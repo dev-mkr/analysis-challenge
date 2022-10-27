@@ -1,28 +1,26 @@
 import create from "zustand";
+import { analysisDataType, reArrangedAnalysisDataType } from "../types/storeTypes";
+import reArrangeData from "../utilities/reArrangeData";
 type Store = {
-  analysisData:
-    | {
-        id: string;
-        month: string;
-        camp: string;
-        country: string;
-        school: string;
-        lessons: number;
-      }
-    | undefined;
+  analysisData: Map<string, reArrangedAnalysisDataType> | undefined;
   error: any;
-  fetch: (key: string, url: string) => void;
+  fetchAnalysisData: () => void;
+  setStore: <T>(key: string, payload: T) => void;
 };
 
 const useStore = create<Store>()((set) => ({
   analysisData: undefined,
   error: false,
-  fetch: (key, url) => {
-    fetch(url)
+
+  fetchAnalysisData: () => {
+    fetch(
+      "https://raw.githubusercontent.com/abdelrhman-arnos/analysis-fe-challenge/master/data.json"
+    )
       .then((res) => res.json())
-      .then((data) => set({ [key]: data }))
+      .then((data) => set({ analysisData: reArrangeData(data) }))
       .catch((error) => set({ error: error }));
   },
+  setStore: (key, payload) => set({ [key]: payload }),
 }));
 
 export default useStore;
