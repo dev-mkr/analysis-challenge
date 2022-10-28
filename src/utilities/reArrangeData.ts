@@ -24,7 +24,7 @@ const reArrangeData = (data: analysisDataType): reArrangedAnalysisDataType => {
 
   return sortedData;
 };
-
+//version without immerjs
 // const reArrangeData = (data: analysisDataType) => {
 //   const sortedData = data.reduce((mappedData, item) => {
 //     if (!mappedData.get(item.country) || !mappedData.get(item.country)[item.camp]) {
