@@ -5,7 +5,7 @@ enableMapSet();
 
 import { reArrangedAnalysisDataType } from "../types/storeTypes";
 
-const reArrangeData = (data: analysisDataType) => {
+const reArrangeData = (data: analysisDataType): reArrangedAnalysisDataType => {
   const sortedData = produce(new Map(), (draft) => {
     return data.reduce((mappedData, item) => {
       if (!mappedData.get(item.country) || !mappedData.get(item.country)[item.camp]) {

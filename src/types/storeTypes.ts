@@ -1,3 +1,12 @@
+export type StoreType = {
+  analysisData: reArrangedAnalysisDataType | undefined;
+  error: any;
+  fetchAnalysisData: () => void;
+  selectedCountry: string;
+  selectedCamp: string;
+  selectedSchool: string;
+  setStore: <T>(key: string, payload: T) => void;
+};
 export type analysisDataType = {
   id: string;
   month: string;
@@ -7,8 +16,7 @@ export type analysisDataType = {
   lessons: number;
 }[];
 
-export type reArrangedAnalysisDataType = {
-  camp: {
-    school: analysisDataType;
-  };
-};
+export type reArrangedAnalysisDataType = Map<
+  string,
+  { [camp: string]: { [school: string]: analysisDataType } }
+>;
