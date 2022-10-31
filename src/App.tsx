@@ -1,17 +1,15 @@
-import { useEffect, useMemo } from "react";
-import { enableMapSet } from "immer";
-import useStore from "./store/store";
-
-enableMapSet();
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AnalysisData from "./routes/AnalysisData";
+import PointDetails from "./routes/PointDetails";
 function App() {
-  const fetchAnalysisData = useStore((state) => state.fetchAnalysisData);
-  const analysisData = useStore((state) => state.analysisData);
-  useEffect(() => fetchAnalysisData(), []);
-
-  if (!analysisData) return;
-  console.log(analysisData);
-  return <div className="App"></div>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<AnalysisData />} />
+        <Route path="/point-details" element={<PointDetails />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

@@ -1,6 +1,7 @@
+import { nanoid } from "nanoid";
 import { memo } from "react";
 import useStore from "../../../store/store";
-import DropDown from "../../../components/DropDown";
+import DropDown from "../../../components/DropDownComponent";
 
 const CountryDropDown = () => {
   const analysisData = useStore((state) => state.analysisData);
@@ -8,7 +9,7 @@ const CountryDropDown = () => {
   const selectedCountry = useStore((state) => state.selectedCountry);
 
   const countries = [...(analysisData?.keys() || [])].map((country) => {
-    return <option key={country}>{country}</option>;
+    return <option key={nanoid()}>{country}</option>;
   });
 
   return (

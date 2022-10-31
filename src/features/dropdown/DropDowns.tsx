@@ -9,23 +9,19 @@ const DropDowns = () => {
   const selectedCountry = useStore((state) => state.selectedCountry);
   const selectedCamp = useStore((state) => state.selectedCamp);
   const setStore = useStore((state) => state.setStore);
-  const selectedSchool = useStore((state) => state.selectedSchool);
 
   useEffect(() => {
     const firstCamp = Object.keys(analysisData?.get(selectedCountry) || {})[0];
-    setStore("selectedCamp", firstCamp);
-    setStore("selectedSchool", "Show All");
+    if (!selectedCamp) {
+      setStore("selectedCamp", firstCamp);
+    }
   }, []);
 
   return (
-    <header>
+    <header className="flex w-full py-10 justify-between flex-col lg:flex-row gap-3">
       <CountryDropDown />
       <CampDropDown />
       <SchoolDropDown />
-
-      <div>
-        {selectedCountry}:{selectedCamp}:{selectedSchool}
-      </div>
     </header>
   );
 };

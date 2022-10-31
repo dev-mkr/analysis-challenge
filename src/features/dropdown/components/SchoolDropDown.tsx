@@ -1,5 +1,6 @@
 import useStore from "../../../store/store";
-import DropDown from "../../../components/DropDown";
+import DropDown from "../../../components/DropDownComponent";
+import { nanoid } from "nanoid";
 
 const SchoolDropDown = () => {
   const analysisData = useStore((state) => state.analysisData);
@@ -11,11 +12,12 @@ const SchoolDropDown = () => {
   const schools = Object.keys(
     analysisData?.get(selectedCountry)?.[selectedCamp] || {}
   ).map((school, index) => {
-    return <option key={index}>{school}</option>;
+    return <option key={nanoid()}>{school}</option>;
   });
+
   return (
     <DropDown
-      labelText="Select a Country"
+      labelText="Select a School"
       value={selectedSchool}
       onChange={(event) => setStore("selectedSchool", event.target.value)}
       showAll={true}
