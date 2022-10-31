@@ -71,7 +71,7 @@ const LineChart = () => {
     }
   }, [selectedCountry, selectedCamp, selectedSchool]);
   return (
-    <div className="basis-full  lg:basis-4/6">
+    <div className="basis-full  bg-primary text-base lg:basis-4/6">
       <Line
         ref={chartRef}
         data={chartData}

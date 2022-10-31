@@ -52,6 +52,7 @@ const SideLegend = () => {
               style={{
                 color: school.borderColor as string,
               }}
+              title="toggle chart"
             >
               <MinusCircle className="w-7" />
 

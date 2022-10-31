@@ -1,5 +1,6 @@
 import create from "zustand";
-import { StoreType } from "../types/storeTypes";
+import { persist } from "zustand/middleware";
+import { StoreType, themeStoreType } from "../types/storeTypes";
 import reArrangeData from "../utilities/reArrangeData";
 
 const useStore = create<StoreType>()((set, get) => ({
@@ -25,5 +26,15 @@ const useStore = create<StoreType>()((set, get) => ({
   chartData: { datasets: [] },
   chartRef: null,
 }));
-
+export const useThemeStore = create<themeStoreType>()(
+  persist(
+    (set) => ({
+      theme: "light",
+      setThem: (payload: string) => set({ theme: payload }),
+    }),
+    {
+      name: "theme",
+    }
+  )
+);
 export default useStore;

@@ -18,7 +18,7 @@ const DropDowns = () => {
   }, []);
 
   return (
-    <header className="flex w-full py-10 justify-between flex-col lg:flex-row gap-3">
+    <header className="flex w-full flex-col justify-between gap-3 bg-primary py-10 text-base lg:flex-row">
       <CountryDropDown />
       <CampDropDown />
       <SchoolDropDown />

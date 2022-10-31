@@ -24,3 +24,8 @@ export type reArrangedAnalysisDataType = Map<
   string,
   { [camp: string]: { [school: string]: analysisDataType } }
 >;
+
+export type themeStoreType = {
+  theme: string;
+  setThem: (payload: string) => void;
+};
